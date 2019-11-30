@@ -1,0 +1,15 @@
+#!/bin/sh
+
+. /etc/rc.subr
+
+name=geomyidae
+rcvar=geomyidae_enable
+
+command=/usr/local/bin/${name}
+command_args="-4 -l /var/log/gopher/gopher.log -v 31 -b /usr/local/gopher/gopher.beastieboy.net -u beastieboy -g beastieboy -h gopher.beastieboy.net"
+
+pidfile="/var/run/${name}.pid"
+stop_postcmd="echo Eek-eek!"
+
+load_rc_config $name
+run_rc_command "$1"
